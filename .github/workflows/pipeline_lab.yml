@@ -1,33 +1,33 @@
-name: Push Trigger Workflow
+name: Schedule Trigger Workflow
 
+## Executa em horários programados (cron)
 on:
-  push:
-    branches: 
-      - main
-      - develop
-    paths:
-      - 'src/**'
-      - 'README.md'
-
+  schedule:
+    # Executa às 18:42 Brasília (21:42 UTC)
+    - cron: '45 17 * * *'
+  
+  # Permite execução manual para testes
   workflow_dispatch:
 
 jobs:
-  push-job:
+  scheduled-job:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout código
       uses: actions/checkout@v4
     
-    - name: Informações do Push
+    - name: Informações do Schedule
       run: |
-        echo "Workflow disparado por PUSH"
-        echo "Commit: ${{ github.sha }}"
-        echo "Autor: ${{ github.actor }}"
-        echo "Branch: ${{ github.ref_name }}"
-        echo "Repositório: ${{ github.repository }}"
+        echo "Workflow disparado por SCHEDULE"
+        echo "Data atual: $(date)"
+        echo "Hora UTC: $(date -u)"
+        echo "Timezone: $(date +%Z)"
     
-    - name: Listar arquivos modificados
+    - name: Relatório diário automatizado
       run: |
-        echo "Arquivos no repositório:"
-        ls -la
+        echo "RELATÓRIO DIÁRIO AUTOMATIZADO"
+        echo "================================"
+        echo "Total de commits: $(git rev-list --all --count)"
+        echo "Contribuidores únicos: $(git shortlog -sn | wc -l)"
+        echo "Último commit: $(git log -1 --pretty=format:'%h - %s (%an, %ar)')"
