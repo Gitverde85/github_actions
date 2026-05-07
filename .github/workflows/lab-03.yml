@@ -1,14 +1,15 @@
 name: Push Trigger Workflow
 
-### Executa apenas em push
 on:
   push:
     branches: 
       - main
       - develop
     paths:
-      - 'src/**' # CRIAR ESSES ARQUIVOS PARA FUNCIONAR
-      - 'README.md' # CRIAR ESSES ARQUIVOS PARA FUNCIONAR
+      - 'src/**'
+      - 'README.md'
+
+  workflow_dispatch:
 
 jobs:
   push-job:
