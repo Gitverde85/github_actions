@@ -3,8 +3,8 @@ name: Schedule Trigger Workflow
 ## Executa em horários programados (cron)
 on:
   schedule:
-    # Executa às 18:42 Brasília (21:42 UTC)
-    - cron: '45 17 * * *'
+    
+    - cron: '47 17 * * *'
   
   # Permite execução manual para testes
   workflow_dispatch:
