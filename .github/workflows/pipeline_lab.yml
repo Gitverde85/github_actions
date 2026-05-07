@@ -4,7 +4,7 @@ name: Schedule Trigger Workflow
 on:
   schedule:
     
-    - cron: '47 17 * * *'
+    - cron: '51 20 * * *'
   
   # Permite execução manual para testes
   workflow_dispatch:
