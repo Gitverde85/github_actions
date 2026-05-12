@@ -95,13 +95,14 @@ jobs:
 
       # Função contains() - Verifica se string contém texto
       - name: Verificar se é hotfix
-        if: contains(github.ref, 'hotfix')
+        if: "contains(github.ref, 'hotfix')"
         run: echo "Este é um branch de HOTFIX - processo especial ativado!"
 
       # Função startsWith() - Verifica início da string
       - name: Ação apenas para feature branches
-        if: startsWith(github.ref, 'refs/heads/feature/')
-        run: echo "Branch de feature detectado: ${{ github.ref_name }}"
+        if: "startsWith(github.ref, 'refs/heads/feature/')"
+        run: |
+          echo "Branch de feature detectado: ${{ github.ref_name }}"
 
       # Função endsWith() - Verifica fim da string
       - name: Verificar se commit termina com número
